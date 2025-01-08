@@ -44,7 +44,9 @@ const getFilms = async (req, res) => {
 const getFilmById = async (req, res) => {
   const { id } = req.params;
   try {
-    const film = await Film.findOne({ _id: id }).select("-__v  -updatedAt -createdAt");
+    const film = await Film.findOne({ _id: id }).select(
+      "-__v  -updatedAt -createdAt"
+    );
     if (film) {
       return res.status(200).json({
         success: true,
@@ -58,7 +60,7 @@ const getFilmById = async (req, res) => {
         data: null,
       });
     }
-  }catch (e) {
+  } catch (e) {
     return res.status(400).json({
       success: false,
       message: e.message, // Corrected here
@@ -67,22 +69,63 @@ const getFilmById = async (req, res) => {
   }
 };
 
-const deleteFilmById = async (req,res)=>{
-  const {id} = req.params;
-  try{
-    const film = await Film.deleteOne({_id:id})
+const deleteFilmById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const film = await Film.deleteOne({ _id: id });
     return res.status(201).json({
-      success:true,
-      message:"Film Deleted Success",
-      data:film
-    })
-
-  }catch(e){
-return res.status(404).json({
-  success:false,
-  message:e.message,
-  data:null
-})
+      success: true,
+      message: "Film Deleted Success",
+      data: film,
+    });
+  } catch (e) {
+    return res.status(404).json({
+      success: false,
+      message: e.message,
+      data: null,
+    });
   }
-}
-export { postFilms, getFilms, getFilmById ,deleteFilmById};
+};
+
+
+const updateFilmById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const {
+      title,
+      shortDescription,
+      director,
+      poster,
+      releaseYear,
+      category,
+      language,
+      rating,
+    } = req.body;
+    const updatedfilm = await Film.updateOne(
+      { _id: id },
+      {
+        title: title,
+        shortDescription: shortDescription,
+        director: director,
+        poster: poster,
+        releaseYear: releaseYear,
+        category: category,
+        language: language,
+        rating: rating,
+      }
+    );
+    return res.status(201).json({
+      success: true,
+      message: "Film Updated Success",
+      data: updatedfilm,
+    });
+  } catch (e) {
+    return res.status(404).json({
+      success: true,
+      message: e.message,
+      data: null,
+    });
+  }
+};
+
+export { postFilms, getFilms, getFilmById, deleteFilmById,updateFilmById };
