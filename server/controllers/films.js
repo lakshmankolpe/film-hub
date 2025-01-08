@@ -63,7 +63,7 @@ const getFilmById = async (req, res) => {
   } catch (e) {
     return res.status(400).json({
       success: false,
-      message: e.message, // Corrected here
+      message: e.message, 
       data: null,
     });
   }
@@ -86,7 +86,6 @@ const deleteFilmById = async (req, res) => {
     });
   }
 };
-
 
 const updateFilmById = async (req, res) => {
   const { id } = req.params;
@@ -148,5 +147,11 @@ const updateFilmratingById = async (req, res) => {
   }
 };
 
-
-export { postFilms, getFilms, getFilmById, deleteFilmById,updateFilmById,updateFilmratingById  };
+export {
+  postFilms,
+  getFilms,
+  getFilmById,
+  deleteFilmById,
+  updateFilmById,
+  updateFilmratingById,
+};

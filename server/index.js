@@ -7,7 +7,14 @@ import mongoose, { get } from "mongoose";
 
 //custom imports
 import { getHome, getHealth, getNotFound } from "./other.js";
-import { postFilms,getFilms,getFilmById ,deleteFilmById,updateFilmById,updateFilmratingById } from "./controllers/films.js";
+import {
+  postFilms,
+  getFilms,
+  getFilmById,
+  deleteFilmById,
+  updateFilmById,
+  updateFilmratingById,
+} from "./controllers/films.js";
 
 const app = express();
 app.use(express.json());
@@ -23,12 +30,12 @@ const connectDB = async () => {
 app.get("/", getHome);
 app.get("/health", getHealth);
 
-app.post("/films",postFilms);
+app.post("/films", postFilms);
 app.get("/films", getFilms);
-app.get("/films/:id",getFilmById)
-app.delete("/films/:id",deleteFilmById)
-app.put("/films/:id",updateFilmById)
-app.patch("/films/rating/:id",updateFilmratingById)
+app.get("/films/:id", getFilmById);
+app.delete("/films/:id", deleteFilmById);
+app.put("/films/:id", updateFilmById);
+app.patch("/films/rating/:id", updateFilmratingById);
 
 app.get("*", getNotFound);
 
