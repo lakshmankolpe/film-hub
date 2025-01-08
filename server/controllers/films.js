@@ -128,4 +128,25 @@ const updateFilmById = async (req, res) => {
   }
 };
 
-export { postFilms, getFilms, getFilmById, deleteFilmById,updateFilmById };
+const updateFilmratingById = async (req, res) => {
+  const { id } = req.params;
+  const { rating } = req.body;
+  try {
+    const updatedFilm = await Film.updateOne({ _id: id }, { rating: rating });
+
+    return res.status(201).json({
+      success: true,
+      message: "Film rating updated success",
+      data: updatedFilm,
+    });
+  } catch (e) {
+    return res.status(400).json({
+      success: false,
+      message: e.message,
+      data: null,
+    });
+  }
+};
+
+
+export { postFilms, getFilms, getFilmById, deleteFilmById,updateFilmById,updateFilmratingById  };
