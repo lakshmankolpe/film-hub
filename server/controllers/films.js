@@ -33,7 +33,7 @@ const postFilms = async (req, res) => {
 };
 
 const getFilms = async (req, res) => {
-  const films = await Film.find();
+  const films = await Film.find().select("-__v  -updatedAt -createdAt");
   return res.status(200).json({
     success: true,
     message: "All Films Fetched successfully",
@@ -44,7 +44,7 @@ const getFilms = async (req, res) => {
 const getFilmById = async (req, res) => {
   const { id } = req.params;
   try {
-    const film = await Film.findOne({ _id: id });
+    const film = await Film.findOne({ _id: id }).select("-__v  -updatedAt -createdAt");
     if (film) {
       return res.status(200).json({
         success: true,
