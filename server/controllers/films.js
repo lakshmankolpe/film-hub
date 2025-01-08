@@ -67,4 +67,22 @@ const getFilmById = async (req, res) => {
   }
 };
 
-export { postFilms, getFilms, getFilmById };
+const deleteFilmById = async (req,res)=>{
+  const {id} = req.params;
+  try{
+    const film = await Film.deleteOne({_id:id})
+    return res.status(201).json({
+      success:true,
+      message:"Film Deleted Success",
+      data:film
+    })
+
+  }catch(e){
+return res.status(404).json({
+  success:false,
+  message:e.message,
+  data:null
+})
+  }
+}
+export { postFilms, getFilms, getFilmById ,deleteFilmById};

@@ -7,7 +7,7 @@ import mongoose, { get } from "mongoose";
 
 //custom imports
 import { getHome, getHealth, getNotFound } from "./other.js";
-import { postFilms,getFilms,getFilmById } from "./controllers/films.js";
+import { postFilms,getFilms,getFilmById ,deleteFilmById} from "./controllers/films.js";
 
 const app = express();
 app.use(express.json());
@@ -26,6 +26,7 @@ app.get("/health", getHealth);
 app.post("/films",postFilms);
 app.get("/films", getFilms);
 app.get("/films/:id",getFilmById)
+app.delete("/films/:id",deleteFilmById)
 
 app.get("*", getNotFound);
 
