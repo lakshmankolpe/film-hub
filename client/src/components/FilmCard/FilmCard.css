@@ -1,6 +1,22 @@
 .filmcard{
     border: 1px solid black;
-    margin: 5px;
+    margin: 10px;
+    padding: 10px;
+  
     background-color: aliceblue;
-    border-radius: 7px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+    display: flex;
+}
+
+.film-card-poster{
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.film-card-info{
+margin-left: 20px;
 }
