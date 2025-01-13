@@ -1,0 +1,17 @@
+.input-container{
+    margin: 20px;
+    padding: 5px;
+    }
+    
+    .input-lebal{
+    display: block;
+    margin-left: 20px;
+    font-size: 24px;
+    }
+    .input-element{
+    width: 90%;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+    font-size: 20px;
+    }
