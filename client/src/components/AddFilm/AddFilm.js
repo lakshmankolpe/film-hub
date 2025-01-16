@@ -3,7 +3,7 @@ import "./AddFilm.css";
 import Input from "../../components/Input/Input";
 import Button from "../Button/Button";
 import axios from "axios";
-import toast,{Toaster} from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast";
 
 function AddFilm() {
   const [film, setFilm] = useState({
@@ -23,30 +23,32 @@ function AddFilm() {
       {
         title: film.title,
         shortDescription: film.shortDescription,
-        director:film.director,
-        poster:film.poster,
-        releaseYear:film.releaseYear,
-        category:film.category,
-        language:film.language,
-        rating:film.rating
+        director: film.director,
+        poster: film.poster,
+        releaseYear: film.releaseYear,
+        category: film.category,
+        language: film.language,
+        rating: film.rating,
       }
     );
-    toast.success(response.data.message)
+    toast.success(response.data.message);
     setFilm({
-      title:"",
-      shortDescription:"",
-      director:"",
-      poster:"",
-      releaseYear:"",
-      category:"",
-      language:"",
-      rating:""
-
-    })
+      title: "",
+      shortDescription: "",
+      director: "",
+      poster: "",
+      releaseYear: "",
+      category: "",
+      language: "",
+      rating: "",
+    });
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
   };
   return (
     <div>
-      <h1> Add Film</h1>
+      <h1> Update Film</h1>
       <div className="add-film-form">
         <Input
           label="Title"
@@ -124,6 +126,7 @@ function AddFilm() {
           variant=""
         />
       </div>
+      <Toaster />
     </div>
   );
 }

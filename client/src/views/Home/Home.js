@@ -22,7 +22,8 @@ function Home() {
     loadFilms();
   }, []);
   return (
-    <div>
+    <div className="film-container">
+      <h1>Home</h1>
       {films?.map((film, index) => {
         const {
           category,

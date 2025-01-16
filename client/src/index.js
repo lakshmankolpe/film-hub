@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./views/Home/Home";
 import Film from "./views/Film/Film";
 import AddFilm from "./components/AddFilm/AddFilm";
+import EditFilm from "./components/EditFilm/EditFilm"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -20,5 +21,9 @@ const router = createBrowserRouter([
     path: "/film/:id",
     element: <Film />,
   },
+  {
+    path:"/film/edit/:id",
+    element:<EditFilm/>
+  }
 ]);
 root.render(<RouterProvider router={router} />);

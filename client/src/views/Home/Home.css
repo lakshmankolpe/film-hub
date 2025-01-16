@@ -1,3 +1,9 @@
+
+.film-container{
+    padding: 10px;
+    margin: 0;
+}
+
 .img-add-film-icon{
     position:fixed;
     right: 20px;
